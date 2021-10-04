@@ -153,7 +153,10 @@ def main_game():
 
   board_reset = [' '] * 10
 
+  # Show the positions on the board
   display_board(board_positions)
+
+  # Assigning markers for players
   choice = choice_input()
   human_marker = ''
   computer_marker = ''
@@ -164,10 +167,19 @@ def main_game():
     human_marker = 'O'
     computer_marker = 'X'
 
+  #Decide how goes is the first player 
   turn = who_goes_first()
+
+  # Show empty board
   display_board(board_reset)
+
+  # Asking the user to start the game
   playing = start_game()
+
+  # If the user confirm "start the game" play the game
   while playing:
+
+    # If computer's turn
     if turn == 'Computer goes first':
       print('My turn')
       position = computer_choice(board_reset)
@@ -181,6 +193,8 @@ def main_game():
       else:
         print('Your turn, Human!')
         turn = 'Human goes first'
+    
+    #  If player's turn
     else:
       print('Your turn...')
       position = player_choice(board_reset)
