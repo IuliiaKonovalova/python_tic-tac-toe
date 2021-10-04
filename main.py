@@ -133,7 +133,9 @@ def player_choice(board):
         
   return position
 
-
+def place_marker(board, marker, position):
+    
+    board[position] = marker
 
 def main_game():
   print('Welcome to Tic Tac Toe with me!\n\nThis is the play board.\nPay attention to the positions of cells!')
