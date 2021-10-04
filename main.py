@@ -34,14 +34,15 @@ def choice_input():
   """
 
   marker =''
+
   while not (marker == 'X' or marker == "O"):
     marker = input('Human! Do you want to play for "X" or "O"?\n').upper()
   if marker == "X":
     print('Human, you decided to play for "X".')
-    return ('X', "O")
+    return marker
   else:
     print('Human, you decided to play for "O".')
-    return('O', 'X')
+    return marker
 
 
 
@@ -137,6 +138,16 @@ def place_marker(board, marker, position):
     
     board[position] = marker
 
+def computer_choice(board):
+  position = 0
+  if space_check(board, 5):
+    position = 5
+    print(position)
+    return position
+  else:
+    return print("5 is not available!")
+
+
 def main_game():
   print('Welcome to Tic Tac Toe with me!\n\nThis is the play board.\nPay attention to the positions of cells!')
 
@@ -144,10 +155,49 @@ def main_game():
 
   display_board(board_positions)
   choice = choice_input()
+  human_marker = ''
+  computer_marker = ''
+  if choice == 'X':
+    human_marker = 'X'
+    computer_marker = 'O'
+  else:
+    human_marker = 'O'
+    computer_marker = 'X'
+
   turn = who_goes_first()
   display_board(board_reset)
   playing = start_game()
+  while playing:
+    if turn == 'Computer goes first':
+      print('My turn')
+      position = computer_choice(board_reset)
+      place_marker(board_reset, computer_marker, position)
+      display_board(board_reset)
 
+      if win_check(board_reset, choice):
+        display_board(board_reset)
+        print('Congratulations ME! I have won the game!')
+        playing = False
+      else:
+        print('Your turn, Human!')
+        turn = 'Human goes first'
+    else:
+      print('Your turn...')
+      position = player_choice(board_reset)
+      place_marker(board_reset, human_marker, position)
+      display_board(board_reset)
+      if win_check(board_reset, choice):
+        display_board(board_reset)
+        print('Congratulations! You have won the game!')
+        playing = False
+      else:
+        print('Computer goes')
+        # if full_board_check(board_reset):
+        #   display_board(board_reset)
+        #   print('The game is a draw!')
+        #   pass
+        # else:
+        turn = 'Computer goes first'
 
 
 
