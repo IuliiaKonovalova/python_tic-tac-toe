@@ -119,6 +119,21 @@ def full_board_check(board):
   return True
 
 
+def player_choice(board):
+
+  """
+  Asks the user for the next position
+  Checks whether is input is correct
+  Checks whether the place is available
+  """
+  position = 0
+    
+  while position not in [1,2,3,4,5,6,7,8,9] or not space_check(board, position):
+    position = int(input('Choose your next position: (1-9) '))
+        
+  return position
+
+
 
 def main_game():
   print('Welcome to Tic Tac Toe with me!\n\nThis is the play board.\nPay attention to the positions of cells!')
@@ -130,6 +145,7 @@ def main_game():
   turn = who_goes_first()
   display_board(board_reset)
   playing = start_game()
+
 
 
 
