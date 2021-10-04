@@ -21,7 +21,7 @@ def display_board(board):
     print('   |   |')
 
 board_positions = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-board_reset = [' '] * 10
+
 board_new = ['0', '*', '*', '*', '*', '*', '*', '*', '*', '*']
 
 
@@ -102,21 +102,35 @@ def start_game():
     return False
 
 
+def space_check(board, position):
+  """
+  Checks whether the board cell is available
+  """
+  return board[position] == ' '
+
+def full_board_check(board):
+  """
+  Checks whether the board is full
+  If full, returns true
+  """
+  for i in range(1,10):
+    if space_check(board, i):
+      return False
+  return True
+
+
+
 def main_game():
   print('Welcome to Tic Tac Toe with me!\n\nThis is the play board.\nPay attention to the positions of cells!')
 
+  board_reset = [' '] * 10
+
   display_board(board_positions)
-  choice_input()
+  choice = choice_input()
   turn = who_goes_first()
   display_board(board_reset)
-  start_game()
-  if start_game():
-    if turn == 'Computer goes first':
-      print('cccccccc')
-    else:
-      print('hhhhhhh')
+  playing = start_game()
 
 
-  
 
 main_game()
