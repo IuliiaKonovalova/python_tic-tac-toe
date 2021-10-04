@@ -1,4 +1,5 @@
 from IPython.display import clear_output
+from random import randint
 
 def display_board(board):
     clear_output()
@@ -57,3 +58,33 @@ def win_check(board, mark):
   (board[9] == mark and board[6] == mark and board[3] == mark))
 
 win_check(new_board, 'X')
+
+def who_goes_first():
+  """
+  Allows user to choose who will go first: computer or the user
+  Provides the option to randomly choose who plays first
+  Provides the option to choose who goes first by the user
+  """
+  agreement = ''
+  while not (agreement == 'Y' or agreement == 'N'):
+    agreement = input('Do you agree to randomly decide who goes first?\nType"Y" if you agree\nType "N" if want to decide be yourself\n').upper()
+  
+  if agreement == 'Y':
+    if randint(0, 1) == 0:
+      print('Human goes first')
+      return 'Human goes first'
+    else:
+      print('Computer goes first')
+      return 'Computer goes first'
+  else:
+    human_choice = input('You call...\nPrint "C" if you want me to go first.\n "Print "H" if you want to go first.\n').upper()
+    while not (human_choice == 'C' or human_choice == 'H'):
+      return human_choice
+    if human_choice == 'H':
+      print('Human goes first')
+      return 'Human goes first'
+    else:
+      print('Computer goes first')
+      return 'Computer goes first'
+
+who_goes_first()
