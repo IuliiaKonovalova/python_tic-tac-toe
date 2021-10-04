@@ -1,7 +1,11 @@
 from IPython.display import clear_output
 
 def display_board(board):
-    clear_output()  # Remember, this only works in jupyter!
+    clear_output()
+
+    """
+    Prints an empty playing board to the user
+    """
     
     print('   |   |')
     print(' ' + board[7] + ' | ' + board[8] + ' | ' + board[9])
