@@ -35,10 +35,25 @@ def choice_input():
   while not (marker == 'X' or marker == "O"):
     marker = input('Human! Do you want to play for "X" or "O"?\n').upper()
   if marker == "X":
-    print('Human you decided to play for "X".')
+    print('Human, you decided to play for "X".')
     return ('X', "O")
   else:
     print('Human, you decided to play for "O".')
     return('O', 'X')
 
 choice_input()
+
+def win_check(board, mark):
+  """
+  Tests whether there is a win
+  """
+  return ((board[7] == mark and board[8] == mark and board[9] == mark) or
+  (board[4] == mark and board[5] == mark and board[6] == mark) or
+  (board[1] == mark and board[2] == mark and board[3] == mark) or
+  (board[7] == mark and board[5] == mark and board[3] == mark) or
+  (board[9] == mark and board[5] == mark and board[1] == mark) or
+  (board[7] == mark and board[4] == mark and board[1] == mark) or
+  (board[8] == mark and board[5] == mark and board[2] == mark) or
+  (board[9] == mark and board[6] == mark and board[3] == mark))
+
+win_check(new_board, 'X')
