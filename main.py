@@ -1,5 +1,5 @@
 from IPython.display import clear_output
-from random import randint
+from random import randint, shuffle
 
 def display_board(board):
     clear_output()
@@ -140,12 +140,33 @@ def place_marker(board, marker, position):
 
 def computer_choice(board):
   position = 0
+  comp_core_guesses = [1, 3, 7, 9]
+  shuffle(comp_core_guesses)
+  # print(comp_core_guess)
   if space_check(board, 5):
     position = 5
     print(position)
     return position
+  elif space_check(board, comp_core_guesses[0]):
+    position = comp_core_guesses[0]
+    print(position)
+    return position
+  elif space_check(board, comp_core_guesses[1]):
+    position = comp_core_guesses[1]
+    print(position)
+    return position
+  elif space_check(board, comp_core_guesses[2]):
+    position = comp_core_guesses[2]
+    print(position)
+    return position
+  elif space_check(board, comp_core_guesses[3]):
+    position = comp_core_guesses[3]
+    print(position)
+    return position
   else:
-    return print("5 is not available!")
+    print("1, 3, 5, 7, 9 are not available")
+
+
 
 
 def main_game():
