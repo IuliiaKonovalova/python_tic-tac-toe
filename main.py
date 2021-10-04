@@ -23,3 +23,22 @@ def display_board(board):
 new_board = ['0', '*', '*', '*', '*', '*', '*', '*', '*', '*']
 
 display_board(new_board)
+
+def choice_input():
+  """
+  Ask user whether the user wants to play for "X" or "O"
+  Checks whether the input is correct
+  Ruterns the users input to the display
+  """
+
+  marker =''
+  while not (marker == 'X' or marker == "O"):
+    marker = input('Human! Do you want to play for "X" or "O"?\n').upper()
+  if marker == "X":
+    print('Human you decided to play for "X".')
+    return ('X', "O")
+  else:
+    print('Human, you decided to play for "O".')
+    return('O', 'X')
+
+choice_input()
