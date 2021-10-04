@@ -24,7 +24,7 @@ board_positions = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 board_reset = [' '] * 10
 board_new = ['0', '*', '*', '*', '*', '*', '*', '*', '*', '*']
 
-# display_board(board_new)
+
 
 def choice_input():
   """
@@ -43,7 +43,7 @@ def choice_input():
     print('Human, you decided to play for "O".')
     return('O', 'X')
 
-# choice_input()
+
 
 def win_check(board, mark):
   """
@@ -58,7 +58,7 @@ def win_check(board, mark):
   (board[2] == mark and board[5] == mark and board[8] == mark) or
   (board[3] == mark and board[6] == mark and board[9] == mark))
 
-# win_check(new_board, 'X')
+
 
 def who_goes_first():
   """
@@ -88,13 +88,35 @@ def who_goes_first():
       print('Computer goes first')
       return 'Computer goes first'
 
-# who_goes_first()
+
+def start_game():
+  """
+  Asks the user whether the user is ready to start playing
+  """
+  play_game = input('Are you ready to play?\nEnter "Y" or "N".\n').upper()
+  while not (play_game == "Y" or play_game == "N"):
+    return play_game
+  if play_game == 'Y':
+    return True
+  else:
+    return False
+
 
 def main_game():
   print('Welcome to Tic Tac Toe with me!\n\nThis is the play board.\nPay attention to the positions of cells!')
 
   display_board(board_positions)
   choice_input()
-  who_goes_first()
+  turn = who_goes_first()
+  display_board(board_reset)
+  start_game()
+  if start_game():
+    if turn == 'Computer goes first':
+      print('cccccccc')
+    else:
+      print('hhhhhhh')
+
+
+  
 
 main_game()
