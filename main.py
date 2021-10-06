@@ -142,6 +142,8 @@ def computer_choice(board):
   position = 0
   comp_core_guesses = [1, 3, 7, 9]
   shuffle(comp_core_guesses)
+  comp_additional_guesses = [2, 4, 6, 7]
+  shuffle(comp_additional_guesses)
   # print(comp_core_guess)
   if space_check(board, 5):
     position = 5
@@ -151,6 +153,52 @@ def computer_choice(board):
     position = comp_core_guesses[0]
     print(position)
     return position
+  # elif comp_core_guesses[0] == 1:
+  #   third_guess = [3, 7]
+  #   shuffle(third_guess)
+  #   if space_check(board, third_guess[0]):
+  #     position = third_guess[0]
+  #     print(position)
+  #     return position
+  #   elif space_check(board, third_guess[1]):
+  #     position = third_guess[1]
+  #     print(position)
+  #     return position
+  # elif comp_core_guesses[0] == 3:
+  #   fourth_guess = [1, 9]
+  #   shuffle(fourth_guess)
+  #   if space_check(board, fourth_guess[0]):
+  #     position = fourth_guess[0]
+  #     print(position)
+  #     return position
+  #   elif space_check(board, fourth_guess[1]):
+  #     position = fourth_guess[1]
+  #     print(position)
+  #     return position
+  # elif comp_core_guesses[0] == 7:
+  #   fifth_guess = [1, 9]
+  #   shuffle(fifth_guess)
+  #   if space_check(board, fifth_guess[0]):
+  #     position = fifth_guess[0]
+  #     print(position)
+  #     return position
+  #   elif space_check(board, fifth_guess[1]):
+  #     position = fifth_guess[1]
+  #     print(position)
+  #     return position
+
+  # elif comp_core_guesses[0] == 9:
+  #   sixth_guess = [3, 7]
+  #   shuffle(sixth_guess)
+  #   if space_check(board, sixth_guess[0]):
+  #     position = sixth_guess[0]
+  #     print(position)
+  #     return position
+  #   elif space_check(board, sixth_guess[1]):
+  #     position = sixth_guess[1]
+  #     print(position)
+  #     return position
+
   elif space_check(board, comp_core_guesses[1]):
     position = comp_core_guesses[1]
     print(position)
@@ -163,8 +211,25 @@ def computer_choice(board):
     position = comp_core_guesses[3]
     print(position)
     return position
-  else:
+  elif not space_check(board, 1) and not space_check(board, 3) and not space_check(board, 7) and not space_check(board, 9) and not space_check(board, 5):
     print("1, 3, 5, 7, 9 are not available")
+    
+    if space_check(board, comp_additional_guesses[0]):
+      position = comp_additional_guesses[0]
+      print(position)
+      return position
+    elif space_check(board, comp_additional_guesses[1]):
+      position = comp_additional_guesses[1]
+      print(position)
+      return position
+    elif space_check(board, comp_additional_guesses[2]):
+      position = comp_additional_guesses[2]
+      print(position)
+      return position
+    elif space_check(board, comp_additional_guesses[3]):
+      position = comp_additional_guesses[3]
+      print(position)
+      return position
 
 
 
