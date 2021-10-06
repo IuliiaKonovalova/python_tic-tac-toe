@@ -139,12 +139,14 @@ def place_marker(board, marker, position):
     board[position] = marker
 
 def computer_choice(board):
+  """
+  Answers by the computer
+  """
   position = 0
   comp_core_guesses = [1, 3, 7, 9]
   shuffle(comp_core_guesses)
   comp_additional_guesses = [2, 4, 6, 7]
   shuffle(comp_additional_guesses)
-  # print(comp_core_guess)
   if space_check(board, 5):
     position = 5
     print(position)
@@ -153,52 +155,6 @@ def computer_choice(board):
     position = comp_core_guesses[0]
     print(position)
     return position
-  # elif comp_core_guesses[0] == 1:
-  #   third_guess = [3, 7]
-  #   shuffle(third_guess)
-  #   if space_check(board, third_guess[0]):
-  #     position = third_guess[0]
-  #     print(position)
-  #     return position
-  #   elif space_check(board, third_guess[1]):
-  #     position = third_guess[1]
-  #     print(position)
-  #     return position
-  # elif comp_core_guesses[0] == 3:
-  #   fourth_guess = [1, 9]
-  #   shuffle(fourth_guess)
-  #   if space_check(board, fourth_guess[0]):
-  #     position = fourth_guess[0]
-  #     print(position)
-  #     return position
-  #   elif space_check(board, fourth_guess[1]):
-  #     position = fourth_guess[1]
-  #     print(position)
-  #     return position
-  # elif comp_core_guesses[0] == 7:
-  #   fifth_guess = [1, 9]
-  #   shuffle(fifth_guess)
-  #   if space_check(board, fifth_guess[0]):
-  #     position = fifth_guess[0]
-  #     print(position)
-  #     return position
-  #   elif space_check(board, fifth_guess[1]):
-  #     position = fifth_guess[1]
-  #     print(position)
-  #     return position
-
-  # elif comp_core_guesses[0] == 9:
-  #   sixth_guess = [3, 7]
-  #   shuffle(sixth_guess)
-  #   if space_check(board, sixth_guess[0]):
-  #     position = sixth_guess[0]
-  #     print(position)
-  #     return position
-  #   elif space_check(board, sixth_guess[1]):
-  #     position = sixth_guess[1]
-  #     print(position)
-  #     return position
-
   elif space_check(board, comp_core_guesses[1]):
     position = comp_core_guesses[1]
     print(position)
@@ -277,8 +233,13 @@ def main_game():
         print('Congratulations ME! I have won the game!')
         playing = False
       else:
-        print('Your turn, Human!')
-        turn = 'Human goes first'
+        if full_board_check(board_reset):
+          display_board(board_reset)
+          print('The game is a draw!')
+          break
+        else:
+          print('Your turn, Human!')
+          turn = 'Human goes first'
     
     #  If player's turn
     else:
@@ -291,13 +252,13 @@ def main_game():
         print('Congratulations! You have won the game!')
         playing = False
       else:
-        print('Computer goes')
-        # if full_board_check(board_reset):
-        #   display_board(board_reset)
-        #   print('The game is a draw!')
-        #   pass
-        # else:
-        turn = 'Computer goes first'
+        if full_board_check(board_reset):
+          display_board(board_reset)
+          print('The game is a draw!')
+          break
+        else:
+          print('My turn, Human!')
+          turn = 'Computer goes first'
 
 
 
